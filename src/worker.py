@@ -1,3 +1,5 @@
+import docker
+
 from log_sender import CloudwatchLogSender
 
 
@@ -17,4 +19,9 @@ def worker(
         log_group_name=aws_cloudwatch_group,
         log_stream_name=aws_cloudwatch_stream,
     )
-    cloudwatch_log_sender.send_log_entry("some log entry")
+    client = docker.from_env()
+    container = client.containers.run(
+        image=docker_image, command=bash_command, detach=True
+    )
+    for line in container.logs(stream=True):
+        cloudwatch_log_sender.send_log_entry(str(line).strip())

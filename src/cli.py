@@ -11,7 +11,7 @@ def main(
         ..., envvar="DOCKER_IMAGE", help="A name of a Docker image"
     ),
     bash_command: str = typer.Option(
-        ...,
+        "",
         envvar="BASH_COMMAND",
         help="A bash command (to run inside the Docker image)",
     ),

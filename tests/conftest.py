@@ -2,7 +2,7 @@ import pytest
 
 
 @pytest.fixture()
-def no_worker(mocker):
+def without_worker(mocker):
     mocker.patch("src.cli.worker")
 
 
