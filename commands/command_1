@@ -1,0 +1,6 @@
+pip install pip -U && pip install tqdm && python -c "import time
+counter = 0
+while True:
+    print(counter)
+    counter = counter + 1
+    time.sleep(0.1)"

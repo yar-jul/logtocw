@@ -60,5 +60,5 @@ class CloudwatchLogSender:
         try:
             self.put_log_event(timestamp, log_entry)
         except self.logs.exceptions.ClientError:
-            time.sleep(3)
+            time.sleep(1)
             self.put_log_event(timestamp, log_entry)
