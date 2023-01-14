@@ -4,10 +4,26 @@ version = "0.1.0"
 description = "A Python program that send Docker container logs to CloudWatch Logs"
 authors = ["yar-jul"]
 readme = "README.md"
-packages = [{include = "logtocw"}]
+packages = [
+    { include = "cli.py", from = "src" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+typer = "^0.7.0"
+boto3 = "^1.26.50"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.2.0"
+isort = "^5.11.4"
+black = "^22.12.0"
+pytest-mock = "^3.10.0"
+
+[tool.pytest.ini_options]
+testpaths = "tests/"
+
+[tool.poetry.scripts]
+logtocw = "cli:cli"
 
 [build-system]
 requires = ["poetry-core"]
